@@ -33,6 +33,7 @@ class ContactController extends Controller
             $contact_array = array();
             $sms_log_array = array();
             $color_array = ["green", "red", "purple", "blue", "pink", "indigo", "teal", "cyan", "amber"];
+          
             if (!empty($this->json['contact_list'])) {
                 foreach ($this->json['contact_list'] as $value) {
                     $random = array_random($color_array);
@@ -40,6 +41,7 @@ class ContactController extends Controller
                     array_push($contact_array, ['short_code' => substr($value['contactName'], 0, 1), 'name' => $value['contactName'], 'phoneNumber' => $value['contactNumber'], "color" => $random]);
                 }
             }
+            
             $sms_log = Smslog::orderBy('created_at', 'desc')->get();
             if (!empty($sms_log)) {
                 foreach ($sms_log as $data) {

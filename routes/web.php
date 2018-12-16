@@ -12,7 +12,12 @@
 */
 //Route for home page
 Route::get('/', 'ContactController@index');
+
 // Route for send message form page
 Route::get('/send-message/{mobile}/{name}', 'ContactController@sendMessagePage');
+
 // Route for post message
 Route::post('send_otp', 'MessageController@validateNewRequest')->name('send_otp');
+
+//Personal 
+Route::get('/toure', 'PersonalController@index');
